@@ -13,9 +13,13 @@ def plusMinus(arr):
         else:
             neg += 1
 
-    print(pos / total)
-    print(neg / total)
-    print(zero / total)
+    pos_calc = format(float(pos / total), '.6f')
+    neg_calc = format(float(neg / total), '.6f')
+    zero_calc = format(float(zero / total), '.6f')
+
+    print(pos_calc)
+    print(neg_calc)
+    print(zero_calc)
 
 
 plusMinus([-4, 3, -9, 0, 4, 1])
