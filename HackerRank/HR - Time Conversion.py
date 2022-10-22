@@ -15,4 +15,4 @@ def timeConversion(s):
     return s
 
 
-print(timeConversion('12:45:54PM'))
+print(timeConversion('7:05:45PM'))
