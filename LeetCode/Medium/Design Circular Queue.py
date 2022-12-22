@@ -7,24 +7,24 @@ class MyCircularQueue:
         self.size = k
 
     def enQueue(self, value: int) -> bool:
-        if self.isEmpty():
-            self.front = 0
-            self.rear = 0
-            self.queue[0] = value
-            return True
-        else:
-            if self.isFull():
-                return False
+        if not self.isFull():
+            if self.isEmpty():
+                self.front = 0
+                self.rear = 0
+                self.queue[0] = value
+                return True
             else:
                 self.rear = (self.rear + 1) % self.size
                 self.queue[self.rear] = value
                 return True
+        else:
+            return False
 
     def deQueue(self) -> bool:
         if self.isEmpty():
             return False
         else:
-            if ((self.front + 1) % self.size) == self.rear:
+            if self.front and self.rear:
                 self.queue[self.front] = None
                 self.front = -1
                 self.rear = -1
@@ -54,13 +54,10 @@ class MyCircularQueue:
 
 
 if __name__ == '__main__':
-    myCircularQueue = MyCircularQueue(3)
-    print(myCircularQueue.enQueue(1))  # return True
-    print(myCircularQueue.enQueue(2))  # return True
-    print(myCircularQueue.enQueue(3))  # return True
-    print(myCircularQueue.enQueue(4))  # return False
-    print(myCircularQueue.Rear())  # return 3
-    print(myCircularQueue.isFull())  # return True
-    print(myCircularQueue.deQueue())  # return True
-    print(myCircularQueue.enQueue(4))  # return True
-    print(myCircularQueue.Rear())  # return 4
+    myCircularQueue = MyCircularQueue(2)
+    print(myCircularQueue.enQueue(1))
+    print(myCircularQueue.enQueue(2))
+    print(myCircularQueue.deQueue())
+    print(myCircularQueue.deQueue())
+
+    print(myCircularQueue.Front())
